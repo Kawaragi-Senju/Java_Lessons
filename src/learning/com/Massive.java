@@ -13,7 +13,7 @@ public class Massive {
         else if(a[1] % 2 == 0){
             System.out.println("1");
         }
-    else if(a[2] % 2 == 0){
+        else if(a[2] % 2 == 0){
             System.out.println("2");
         }
     }
