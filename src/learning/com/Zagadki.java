@@ -1,6 +1,6 @@
 package learning.com;
 
-import java.util.Random;
+import  java.util.Random;
 import java.util.Scanner;
 
 public class Zagadki {
@@ -23,4 +23,3 @@ public class Zagadki {
         System.out.println("Right");
     }
 }
-//norm tema
