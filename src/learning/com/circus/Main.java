@@ -1,4 +1,4 @@
-package learning.com.Circus;
+package learning.com.circus;
 
 import java.util.Scanner;
 
