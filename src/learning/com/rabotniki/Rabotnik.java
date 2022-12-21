@@ -1,17 +1,19 @@
 package learning.com.rabotniki;
 
 public class Rabotnik {
-    int id;
+    int koef;
     int hourlyrate;
-    int time;
+    static int vkof = 10;
 
-    public Rabotnik(int id, int hourlyrate, int time){
-        this.id = id;
+    public Rabotnik(int koef, int hourlyrate){
+        this.koef = koef;
         this.hourlyrate = hourlyrate;
-        this.time = time;
     }
 
-    public int zarplata(){
-        return hourlyrate * time;
+    public int zarplata(int time){
+        return hourlyrate * time + koef;
+    }
+    public static int zp(int time){
+        return time * vkof;
     }
 }

@@ -6,6 +6,11 @@ public class Polygon {
      public Polygon(int perimetr){
          this.perimetr = perimetr;
      }
+     public Polygon(int stor, int[] m){
+
+     }
+
+
 
      static void showperimetr(){
        return ;
