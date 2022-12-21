@@ -1,0 +1,7 @@
+package learning.com.polygon;
+
+public class Main {
+    public static void main(String[] args) {
+
+    }
+}
