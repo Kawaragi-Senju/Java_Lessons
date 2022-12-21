@@ -10,8 +10,8 @@ public class Rabotnik {
         this.hourlyrate = hourlyrate;
     }
 
-    public int zarplata(int time){
-        return hourlyrate * time + koef;
+    public int zarplata(int time1){
+        return hourlyrate * time1 + koef;
     }
     public static int zp(int time){
         return time * vkof;
