@@ -7,5 +7,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Введите число часов ");
         System.out.println(Rabotnik.zp(scanner.nextInt()));
+        Rabotnik rab = new Rabotnik(8,4);
+        System.out.println(rab);
     }
 }
