@@ -2,18 +2,26 @@ package learning.com.polygon;
 
 public class Polygon {
      int perimetr;
+     int veli;
+     int []m;
+     int stor;
 
-     public Polygon(int perimetr){
-         this.perimetr = perimetr;
-     }
      public Polygon(int stor, int[] m){
+     this.stor = stor;
+     this.m = m;
 
      }
-
+     public Polygon(int stor, int veli){
+          this.stor = stor;
+          this.veli = veli;
+     }
+     public Polygon(String mn){
+         System.out.println("многоугольник не определен");
+     }
 
 
      static void showperimetr(){
-       return ;
+       return  ;
      }
 }
 // Создать класс Polygon (многоугольник) с полем perimeter. Определить три конструктора:
