@@ -19,9 +19,12 @@ public class Polygon {
          System.out.println("многоугольник не определен");
      }
 
+     public Polygon(){
+     }
+
 
      static void showperimetr(){
-       return  ;
+          return;
      }
 }
 // Создать класс Polygon (многоугольник) с полем perimeter. Определить три конструктора:
