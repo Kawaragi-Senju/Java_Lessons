@@ -3,11 +3,12 @@ package learning.com.polygon;
 public class Main {
     public static void main(String[] args) {
         int x = 0;
-        int[] m = {3, 3, 3, 3, 3, 3};
+        int[] m = {3, 3, 3, 3, 3};
         for (int i = 0; i < m.length; i++){
             x += m[i];
         }
-        Polygon polygon = new Polygon(6, m);
+        Polygon polygon = new Polygon(5, m);
+        System.out.println(Polygon.showperimetr(5, m));
         System.out.println(x);
     }
 }

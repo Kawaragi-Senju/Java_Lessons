@@ -3,28 +3,27 @@ package learning.com.polygon;
 public class Polygon {
      int perimetr;
      int veli;
-     int []m;
+     int[] m;
      int stor;
 
-     public Polygon(int stor, int[] m){
-     this.stor = stor;
-     this.m = m;
+     public Polygon(int stor, int[] m) {
+          this.stor = stor;
+          this.m = m;
 
      }
-     public Polygon(int stor, int veli){
+
+     public Polygon(int stor, int veli) { //если он равносторонний
           this.stor = stor;
           this.veli = veli;
      }
-     public Polygon(String mn){
-         System.out.println("многоугольник не определен");
-     }
-
-     public Polygon(){
-     }
 
 
-     static void showperimetr(){
-          return;
+     static String showperimetr(int stor, int[] m) {
+          if (stor % 2 == 0) {
+               return "прямоугольник равносторонний";
+          } else {
+               return "Прямоугольник не равносторонний";
+          }
      }
 }
 // Создать класс Polygon (многоугольник) с полем perimeter. Определить три конструктора:
