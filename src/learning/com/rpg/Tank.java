@@ -8,4 +8,9 @@ public class Tank extends Person{
         super(hp, name, TANK_NAME);
         this.shield = shield;
     }
+
+    @Override
+    public void printInfo(){
+        System.out.println(hp + TANK_NAME + name + shield);
+    }
 }
