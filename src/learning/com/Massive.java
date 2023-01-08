@@ -18,3 +18,4 @@ public class Massive {
         }
     }
 }
+//массив
