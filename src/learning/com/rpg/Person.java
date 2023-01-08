@@ -1,6 +1,6 @@
 package learning.com.rpg;
 
-public class Person {
+public abstract class Person {
     int hp;
     String name;
     String className;
@@ -10,4 +10,6 @@ public class Person {
         this.className = className;
         this.name = name;
     }
+
+    public abstract void printInfo();
 }
