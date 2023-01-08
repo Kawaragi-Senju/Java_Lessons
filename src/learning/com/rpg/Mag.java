@@ -8,4 +8,9 @@ public class Mag extends Person{
         super(hp, name, MAG_NAME );
         this.mana = mana;
     }
+
+    @Override
+    public void printInfo(){
+        System.out.println(hp + MAG_NAME + name + mana);
+    }
 }
