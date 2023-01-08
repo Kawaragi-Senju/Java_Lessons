@@ -7,4 +7,9 @@ public class Archer extends Person{
         super(hp, name, ARCHER_NAME);
         this.howArrows = howArrows;
     }
+
+    @Override
+    public void printInfo() {
+        System.out.println(hp + ARCHER_NAME + name + howArrows);
+    }
 }
