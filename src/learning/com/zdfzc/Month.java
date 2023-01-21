@@ -1,6 +1,7 @@
 package learning.com.zdfzc;
 
-public enum Month {
+public enum
+Month {
     DECEMBER(70),
     JANUARY(70),
     FEBRUARY(70),
