@@ -23,9 +23,9 @@ public class Main {
         book4.name = "LOTR";
 
         Book[] m = {book1, book2, book3, book4};
-        for(int i = 0; i < m.length; i++){
-            if(book.equals(m[i])){
-                System.out.println(m[i]);
+        for (Book value : m) {
+            if (book.equals(value)) {
+                System.out.println(value);
                 break;
             }
         }
