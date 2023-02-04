@@ -24,7 +24,10 @@ public class Main {
 
         Book[] m = {book1, book2, book3, book4};
         for(int i = 0; i < m.length; i++){
-            book.equals(m[i]);
+            if(book.equals(m[i])){
+                System.out.println(m[i]);
+                break;
+            }
         }
     }
 }
