@@ -2,8 +2,8 @@ package learning.com;
 
 public class StTest {
     public static void main(String[] args) {
-        String s = "ABCCCB";
-        System.out.println(s.replace(s, "!"));
+        String s = "ABCCBA";
+        System.out.println(pol(s));
     }
 
     static boolean pol(String s){
