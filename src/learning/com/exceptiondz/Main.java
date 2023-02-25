@@ -16,8 +16,7 @@ public class Main {
             System.out.println("NumberFormatException");
         }catch(LengthException e2){
             System.out.println("LengthException");
-        }
-        finally {
+        } finally {
             System.out.println("Program is over");
         }
     }

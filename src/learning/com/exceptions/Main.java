@@ -14,7 +14,7 @@ public class Main {
 
     static void foo(){
         try{
-            System.out.println(metod("sfdf"));
+            System.out.println(metod(""));
         }catch(Exception e){
             System.out.println("Hello Noname");
         }finally {
