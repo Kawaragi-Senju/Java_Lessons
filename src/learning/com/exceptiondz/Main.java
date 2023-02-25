@@ -10,7 +10,16 @@ public class Main {
         String a = scanner.nextLine();
         try{
             calculate(a);
-        }catch ()
+        }catch (IllegalOperatorException e){
+            System.out.println("IllegalOperatorException");
+        }catch(NumberFormatException e1){
+            System.out.println("NumberFormatException");
+        }catch(LengthException e2){
+            System.out.println("LengthException");
+        }
+        finally {
+            System.out.println("Program is over");
+        }
     }
 
     private static void calculate(String a) throws LengthException, NumberFormatException, IllegalOperatorException{
@@ -42,7 +51,7 @@ public class Main {
                 System.out.println(chis1 - chis);
                 break;
             default:
-                throw new IllegalOperatorException("IllegalOpertor");
+                throw new IllegalOperatorException("IllegalOperator");
         }
 
         int b = Integer.parseInt(a.substring(0, 2));
