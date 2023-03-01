@@ -11,11 +11,11 @@ public class Main {
         try{
             calculate(a);
         }catch (IllegalOperatorException e){
-            System.out.println("IllegalOperatorException");
+            System.out.println(e.getMessage());
         }catch(NumberFormatException e1){
-            System.out.println("NumberFormatException");
+            System.out.println(e1.getMessage());
         }catch(LengthException e2){
-            System.out.println("LengthException");
+            System.out.println(e2.getMessage());
         } finally {
             System.out.println("Program is over");
         }
