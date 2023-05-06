@@ -9,9 +9,10 @@ public class Book {
 
     @Override
     public boolean equals(Object book){
-        if((book != null) && (book instanceof Book)){
+        if((book != null) && (book instanceof Book) && (name != null)){
+            return name.equals(((Book)book).name);
+        }else{
+            return false;
         }
-        return false;
     }
-    //TODO
 }
