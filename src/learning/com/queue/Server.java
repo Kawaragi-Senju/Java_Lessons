@@ -1,6 +1,7 @@
 package learning.com.queue;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.PriorityQueue;
 
@@ -15,18 +16,50 @@ public class Server {
     }
 
     public void addRequest(Request request) {
+        System.out.println("Request confirmed");
         if (queue.size() < CAPACITY){
             queue.add(request);
         }else{
-            //todo
-            //natify client
+            natifyClients(false);
         }
+    }
+
+    private void blockUnblock(Account account, boolean bool){
+        account.setActivity(bool);
+    }
+
+    private void passingWritedown(Account ac, int summ){
+        if(ac.isActivity()){
+            ac.setCash(ac.getCash() + summ);
+        }
+    }
+
+    private void natifyClients(boolean bool){
+       Iterator<Client> clientIterator = clientsList.iterator();
+       while(clientIterator.hasNext()){
+           clientIterator.next().setReady(bool);
+       }
     }
 
     public void completeRequests(){
         while(queue.size() != 0){
-
+            Request r = queue.poll();
+            switch (r.getRequestType()) {
+                case BLOCK :
+                    blockUnblock(r.getAccount(), false);
+                    break;
+                case UNBLOCK:
+                    blockUnblock(r.getAccount(), true);
+                    break;
+                case PASSING:
+                    passingWritedown(r.getAccount(), r.getSum() );
+                    break;
+                case WRITEDOWN:
+                    passingWritedown(r.getAccount(), - r.getSum());
+                    break;
+            }
         }
+        natifyClients(true);
     }
 }
 // «Сервер» это класс со следующими полями:

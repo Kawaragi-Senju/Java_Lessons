@@ -6,9 +6,17 @@ public class Request {
 
 
     private int sum;
-    private long numberOfAccount;
+
+    private Account account;
     private Calendar calendar;
     private RequestType requestType;
+
+    public Request(int sum, Account account, Calendar calendar, RequestType requestType){
+        this.sum = sum;
+        this.account = account;
+        this.calendar = calendar;
+        this.requestType = requestType;
+    }
 
     public RequestType getRequestType() {
         return requestType;
@@ -29,14 +37,6 @@ public class Request {
         this.sum = sum;
     }
 
-    public long getNumberOfAccount() {
-        return numberOfAccount;
-    }
-
-    public void setNumberOfAccount(long numberOfAccount) {
-        this.numberOfAccount = numberOfAccount;
-    }
-
     public Calendar getCalendar() {
         return calendar;
     }
@@ -44,6 +44,21 @@ public class Request {
     public void setCalendar(Calendar calendar) {
         this.calendar = calendar;
     }
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
+    }
+
+    public String toString(){
+        this.sum = sum;
+        this.account = account;
+        this.calendar = calendar;
+        this.requestType = requestType;
+    }
+
 }
 //    Вид запроса – перечисление со следующими значениями:
 //        WRITEDOWN – списание средств со счета

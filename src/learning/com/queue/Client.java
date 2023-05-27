@@ -1,13 +1,55 @@
 package learning.com.queue;
 
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.Random;
 
 public class Client {
     private List<Account> list = new ArrayList<>();
     private int id;
     private boolean ready;
-    //private
+
+    public List<Account> getList() {
+        return list;
+    }
+
+    public void setList(List<Account> list) {
+        this.list = list;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public boolean isReady() {
+        return ready;
+    }
+
+    public void setReady(boolean ready) {
+        this.ready = ready;
+    }
+
+    public Request generateRequest(){
+        Random random = new Random();
+        int i = random.nextInt(4);
+        RequestType type = null;
+        if (i == 0){
+            type = RequestType.BLOCK;
+        }if (i == 1){
+            type = RequestType.UNBLOCK;
+        }if (i == 2){
+            type = RequestType.PASSING;
+        }if (i == 3){
+            type = RequestType.WRITEDOWN;
+        }
+        return new Request(random.nextInt(1000), list.get(random.nextInt(list.size())), new GregorianCalendar(), type);
+    }
+
 }
 //Клиент – это класс, состоящий из следующих полей:
 //        Счета – список счетов, с которыми работает клиент

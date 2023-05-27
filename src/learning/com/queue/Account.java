@@ -2,7 +2,7 @@ package learning.com.queue;
 
 public class Account {
     private int account_number;
-    private int cash = 1000000;
+    private  int cash = 1000000;
     private boolean activity;
 
     public int getAccount_number() {
