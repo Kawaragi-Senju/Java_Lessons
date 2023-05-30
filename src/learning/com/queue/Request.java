@@ -57,6 +57,7 @@ public class Request {
         this.account = account;
         this.calendar = calendar;
         this.requestType = requestType;
+
     }
 
 }
