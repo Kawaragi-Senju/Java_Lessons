@@ -9,19 +9,19 @@ public class Server {
     private static final int CAPACITY = 10;
     private List<Account> list = new ArrayList<>();
     private PriorityQueue<Request> queue = new PriorityQueue<>(new RequestComparator());
-    private List<Client> clientsList = new ArrayList<>();
+    //private List<Client> clientsList = new ArrayList<>();
 
-    public void addClient(Client client){
-        clientsList.add(client);
-    }
+//    public void addClient(Client client){
+//        clientsList.add(client);
+//    }
 
     public void addRequest(Request request) {
         System.out.println("Request confirmed");
-        if (queue.size() < CAPACITY){
+        System.out.println(request);
             queue.add(request);
-        }else{
-            natifyClients(false);
-        }
+            if (queue.size() == CAPACITY) {
+                completeRequests();
+            }
     }
 
     private void blockUnblock(Account account, boolean bool){
@@ -34,12 +34,12 @@ public class Server {
         }
     }
 
-    private void natifyClients(boolean bool){
-       Iterator<Client> clientIterator = clientsList.iterator();
-       while(clientIterator.hasNext()){
-           clientIterator.next().setReady(bool);
-       }
-    }
+//    private void notifyClients(boolean bool){
+//       Iterator<Client> clientIterator = clientsList.iterator();
+//       while(clientIterator.hasNext()){
+//           clientIterator.next().setReady(bool);
+//       }
+//    }
 
     public void completeRequests(){
         while(queue.size() != 0){
@@ -59,7 +59,6 @@ public class Server {
                     break;
             }
         }
-        natifyClients(true);
     }
 }
 // «Сервер» это класс со следующими полями:

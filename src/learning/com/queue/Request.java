@@ -49,13 +49,10 @@ public class Request {
         this.account = account;
     }
 
+    @Override
     public String toString(){
-        this.sum = sum;
-        this.account = account;
-        this.calendar = calendar;
-        this.requestType = requestType;
         StringBuffer str = new StringBuffer();
-        return String.valueOf(str.append(sum ).append(account ).append(calendar ).append(requestType ));
+        return String.valueOf(str.append("Summa = ").append(sum).append("\n").append("account_number = ").append(account ).append("\n").append(calendar ).append("\n").append(requestType ));
     }
 
 }

@@ -7,9 +7,17 @@ import java.util.Random;
 
 public class Client {
     private List<Account> list = new ArrayList<>();
-    private int id;
-    private boolean ready;
 
+//    private boolean ready;
+
+    public Client(){
+        Account acc = new Account();
+        Account acc1 = new Account();
+        Account acc2 = new Account();
+        list.add(acc);
+        list.add(acc1);
+        list.add(acc2);
+    }
     public List<Account> getList() {
         return list;
     }
@@ -17,26 +25,19 @@ public class Client {
     public void setList(List<Account> list) {
         this.list = list;
     }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public boolean isReady() {
-        return ready;
-    }
-
-    public void setReady(boolean ready) {
-        this.ready = ready;
-    }
+//
+//    public boolean isReady() {
+//        return ready;
+//    }
+//
+//    public void setReady(boolean ready) {
+//        this.ready = ready;
+//    }
 
     public Request generateRequest(){
         Random random = new Random();
-        int i = random.nextInt(4);
+        int i = 0;
+        i = random.nextInt(4);
         RequestType type = null;
         if (i == 0){
             type = RequestType.BLOCK;

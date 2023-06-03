@@ -1,9 +1,16 @@
 package learning.com.queue;
 
+import java.util.Random;
+
 public class Account {
     private int account_number;
-    private  int cash = 1000000;
+    private int cash = 1000000;
     private boolean activity;
+
+    public Account(){
+        Random random = new Random();
+        this.account_number = random.nextInt(Integer.MAX_VALUE);
+    }
 
     public int getAccount_number() {
         return account_number;
@@ -27,6 +34,10 @@ public class Account {
 
     public void setActivity(boolean activity) {
         this.activity = activity;
+    }
+    @Override
+    public String toString(){
+        return String.valueOf(account_number);
     }
 }
 //Счет – это класс, у которого есть следующие поля:

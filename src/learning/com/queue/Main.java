@@ -1,8 +1,31 @@
 package learning.com.queue;
 
+import java.util.Random;
+
 public class Main {
     public static void main(String[] args) {
-        
+        Server server = new Server();
+        Client client = new Client();
+        Client client1 = new Client();
+        Client client2 = new Client();
+        int counter = 0;
+        while (counter != 10){
+            counter += 1;
+            Random random = new Random();
+            int i = random.nextInt(3);
+            switch (i){
+                case 0:
+                    server.addRequest(client.generateRequest());
+                    break;
+                case 1:
+                    server.addRequest(client1.generateRequest());
+                    break;
+                case 2:
+                    server.addRequest(client2.generateRequest());
+                    break;
+            }
+        }
+
     }
 }
 //    Написать программу для обработки запросов к банковским счетам.
