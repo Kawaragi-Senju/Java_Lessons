@@ -26,9 +26,6 @@ public class Request {
         this.requestType = requestType;
     }
 
-
-
-
     public int getSum() {
         return sum;
     }
@@ -57,7 +54,8 @@ public class Request {
         this.account = account;
         this.calendar = calendar;
         this.requestType = requestType;
-
+        StringBuffer str = new StringBuffer();
+        return String.valueOf(str.append(sum ).append(account ).append(calendar ).append(requestType ));
     }
 
 }
