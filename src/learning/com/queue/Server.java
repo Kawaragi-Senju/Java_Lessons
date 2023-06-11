@@ -1,9 +1,12 @@
 package learning.com.queue;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.PriorityQueue;
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.time.Clock;
+import java.time.LocalTime;
+import java.util.*;
 
 public class Server {
     private static final int CAPACITY = 10;
@@ -60,7 +63,19 @@ public class Server {
             }
         }
     }
+
+    public void fileReader(){
+        Path path = Paths.get("../../Requests");
+        LocalTime t = LocalTime.now().plusMinutes(1);
+        File file = new File("../../Requests");
+        file.list();
+    }
+
+    public Request readRequest(String str){
+
+    }
 }
+//Сохранить список, если список не пустой, то пришел запрос, надо выполнить запросы, читаем файлы и создаем запрос. todo
 // «Сервер» это класс со следующими полями:
 //        Счета – список банковских счетов.
 //        Очередь – приоритетная очередь запросов. Инициализируются с помощью интерфейса Comparator. Запросы располагаются в очереди по следующему принципу:
