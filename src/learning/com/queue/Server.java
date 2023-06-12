@@ -1,6 +1,6 @@
 package learning.com.queue;
 
-import java.io.File;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -65,17 +65,42 @@ public class Server {
     }
 
     public void fileReader(){
-        Path path = Paths.get("../../Requests");
         LocalTime t = LocalTime.now().plusMinutes(1);
         File file = new File("../../Requests");
-        file.list();
+        while (LocalTime.now().isBefore(t)){
+            if(file.list().length != 0){
+
+            }
+        }
     }
 
-    public Request readRequest(String str){
+    public Request readRequest(String fileName){
+        String[] strings;
+        String str = "";
+        try {
+            FileReader fr = new FileReader(fileName);
+            BufferedReader br = new BufferedReader(fr);
+            Request request = new Request();
+            for(int i = 0; i < 4; i++){
+                str = br.readLine();
+                strings = str.split(" ");
+                switch (strings[0]){
+                    case "account":
 
+                }
+            }
+        } catch (FileNotFoundException e){
+            System.out.println("fnf");
+        }catch (IOException ioException){
+            System.out.println("ioe");
+        }
     }
 }
+//account 1000
+
 //Сохранить список, если список не пустой, то пришел запрос, надо выполнить запросы, читаем файлы и создаем запрос. todo
+//дописать свитч кейс с аккуаунтом
+
 // «Сервер» это класс со следующими полями:
 //        Счета – список банковских счетов.
 //        Очередь – приоритетная очередь запросов. Инициализируются с помощью интерфейса Comparator. Запросы располагаются в очереди по следующему принципу:
