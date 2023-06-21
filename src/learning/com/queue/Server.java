@@ -10,7 +10,7 @@ import java.util.*;
 
 public class Server {
     private static final int CAPACITY = 10;
-    private List<Account> list = new ArrayList<>();
+    private List<Account> accountList = new ArrayList<>();
     private PriorityQueue<Request> queue = new PriorityQueue<>(new RequestComparator());
     //private List<Client> clientsList = new ArrayList<>();
 
@@ -86,7 +86,14 @@ public class Server {
                 strings = str.split(" ");
                 switch (strings[0]){
                     case "account":
-
+                        request.setAccount(listOfAccount(Integer.parseInt(strings[1])));
+                        break;
+                    case "sum":
+                        request.setSum(Integer.parseInt(strings[1]));
+                        break;
+                    case "requestType":
+                        request.setRequestType(convertRequestType(strings[1]));
+                        break;
                 }
             }
         } catch (FileNotFoundException e){
@@ -95,9 +102,31 @@ public class Server {
             System.out.println("ioe");
         }
     }
+        public Account listOfAccount(int i){
+            for(Account a:accountList){
+                if (i == a.getAccount_number()){
+                    return a;
+                }
+            }
+            return null;
+        }
+
+        public RequestType convertRequestType(String string){
+            switch (string){
+                case "WRITEDOWN":
+                    return RequestType.WRITEDOWN;
+                case "PASSING":
+                    return RequestType.PASSING;
+                case "BLOCK":
+                    return RequestType.BLOCK;
+                case "UNBLOCK":
+                    return RequestType.UNBLOCK;
+            }
+            return null;
+        }
 }
 //account 1000
-
+// сделать считывание для календаря!!!
 //Сохранить список, если список не пустой, то пришел запрос, надо выполнить запросы, читаем файлы и создаем запрос. todo
 //дописать свитч кейс с аккуаунтом
 
