@@ -4,6 +4,8 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.Clock;
 import java.time.LocalTime;
 import java.util.*;
@@ -75,10 +77,11 @@ public class Server {
     }
 
     public Request readRequest(String fileName){
+        File file = new File(fileName);
         String[] strings;
         String str = "";
         try {
-            FileReader fr = new FileReader(fileName);
+            FileReader fr = new FileReader(file);
             BufferedReader br = new BufferedReader(fr);
             Request request = new Request();
             for(int i = 0; i < 4; i++){
@@ -94,13 +97,19 @@ public class Server {
                     case "requestType":
                         request.setRequestType(convertRequestType(strings[1]));
                         break;
+                    case "Date":
+                        request.setCalendar(showDate(file));
+                        break;
                 }
             }
+            file.delete();
+            return request;
         } catch (FileNotFoundException e){
             System.out.println("fnf");
         }catch (IOException ioException){
             System.out.println("ioe");
         }
+        return null;
     }
         public Account listOfAccount(int i){
             for(Account a:accountList){
@@ -124,11 +133,32 @@ public class Server {
             }
             return null;
         }
+        public Calendar showDate(File file){
+            DateFormat df = new SimpleDateFormat("dd.MM.yyyy.k.m.s.S");
+            Calendar date = new GregorianCalendar();
+            try(BufferedReader br = new BufferedReader(new FileReader(file))){
+                String str = br.readLine();
+                String[] strings = str.split("\\.");
+                date.set(Calendar.DAY_OF_MONTH, Integer.parseInt(strings[0]));
+                date.set(Calendar.MONTH, Integer.parseInt(strings[1]));
+                date.set(Calendar.YEAR, Integer.parseInt(strings[2]));
+                date.set(Calendar.HOUR, Integer.parseInt(strings[3]));
+                date.set(Calendar.MINUTE, Integer.parseInt(strings[4]));
+                date.set(Calendar.SECOND, Integer.parseInt(strings[5]));
+                date.set(Calendar.MILLISECOND, Integer.parseInt(strings[6]));
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            return date;
+        }
 }
 //account 1000
-// сделать считывание для календаря!!!
-//Сохранить список, если список не пустой, то пришел запрос, надо выполнить запросы, читаем файлы и создаем запрос. todo
-//дописать свитч кейс с аккуаунтом
+
+//Сделать закрытыие, удаление и вызват метод реквест в мейне, доавлять реквесты в очередь!!! TODO
+//Чтение папки с файлом, цикл работает около 1000 раз, заходит в директорию смотрит файлы, читает, парсит, порождает реквесты и ставит в очередь.
+// метод лист отдает масив имен файлов в папке, файл.лист.
+
+
 
 // «Сервер» это класс со следующими полями:
 //        Счета – список банковских счетов.
