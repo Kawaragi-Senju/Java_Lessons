@@ -5,6 +5,9 @@ import java.util.Random;
 public class Main {
     public static void main(String[] args) {
         Server server = new Server();
+        Client client11 = new Client();
+        Client client22 = new Client();
+        Client client33 = new Client();
         Client client = new Client();
         Client client1 = new Client();
         Client client2 = new Client();
