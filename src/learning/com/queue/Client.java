@@ -1,16 +1,21 @@
 package learning.com.queue;
 
-import java.util.ArrayList;
-import java.util.GregorianCalendar;
-import java.util.List;
-import java.util.Random;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 public class Client {
     private List<Account> list = new ArrayList<>();
+    private int counter = -1;
+
+    private String name;
 
 //    private boolean ready;
 
-    public Client(){
+    public Client(String name){
         Account acc = new Account();
         Account acc1 = new Account();
         Account acc2 = new Account();
@@ -33,7 +38,6 @@ public class Client {
 //    public void setReady(boolean ready) {
 //        this.ready = ready;
 //    }
-
     public Request generateRequest(){
         Random random = new Random();
         int i = 0;
@@ -51,6 +55,25 @@ public class Client {
         return new Request(random.nextInt(1000), list.get(random.nextInt(list.size())), new GregorianCalendar(), type);
     }
 
+    public String generateFileName(){
+        return name + "_" + counter++;
+    }
+
+    public void toFile(Request request){
+        try {
+            FileWriter fr = new FileWriter(Server.REQUEST_FOLDER.toString() + generateFileName());
+            BufferedWriter bw = new BufferedWriter(fr);
+            bw.write("account " + String.valueOf(request.getAccount().getAccount_number()));
+            bw.write("Sum " + request.getSum());
+            bw.write("RequestType " + request.getRequestType());
+            bw.write("Calendar " + request.getCalendar());
+        }catch (IOException ie){
+            System.out.println("IoException");
+        }
+    }
+
+    public String
+    DateFormat df = new SimpleDateFormat("dd.MM.yyyy.k.m.s.S");
 }
 //Клиент – это класс, состоящий из следующих полей:
 //        Счета – список счетов, с которыми работает клиент
