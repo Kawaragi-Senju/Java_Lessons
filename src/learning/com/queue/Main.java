@@ -5,30 +5,9 @@ import java.util.Random;
 public class Main {
     public static void main(String[] args) {
         Server server = new Server();
-        Client client11 = new Client();
-        Client client22 = new Client();
-        Client client33 = new Client();
-        Client client = new Client();
-        Client client1 = new Client();
-        Client client2 = new Client();
-        int counter = 0;
-        while (counter != 10){
-            counter += 1;
-            Random random = new Random();
-            int i = random.nextInt(3);
-            switch (i){
-                case 0:
-                    server.addRequest(client.generateRequest());
-                    break;
-                case 1:
-                    server.addRequest(client1.generateRequest());
-                    break;
-                case 2:
-                    server.addRequest(client2.generateRequest());
-                    break;
-            }
-        }
-
+        Client client11 = new Client("Ivan");
+        Client client22 = new Client("Maks");
+        Client client33 = new Client("Qwerty");
     }
 }
 //    Написать программу для обработки запросов к банковским счетам.
@@ -79,3 +58,24 @@ public class Main {
 //        Оповестить о готовности принимать запросы
 //        Выполнить запросы
 //        Оповестить о неготовности принимать запросы
+
+//    Client client = new Client();
+//    Client client1 = new Client();
+//    Client client2 = new Client();
+//    int counter = 0;
+//        while (counter != 10){
+//                counter += 1;
+//                Random random = new Random();
+//                int i = random.nextInt(3);
+//                switch (i){
+//                case 0:
+//                server.addRequest(client.generateRequest());
+//                break;
+//                case 1:
+//                server.addRequest(client1.generateRequest());
+//                break;
+//                case 2:
+//                server.addRequest(client2.generateRequest());
+//                break;
+//                }
+//                }
