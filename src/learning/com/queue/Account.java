@@ -2,7 +2,8 @@ package learning.com.queue;
 
 import java.util.Random;
 
-public class Account {
+public class
+Account {
     private int account_number;
     private int cash = 1000000;
     private boolean activity;
