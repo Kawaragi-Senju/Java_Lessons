@@ -1,13 +1,14 @@
 package learning.com.queue;
 
-import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
         Server server = new Server();
-        Client client11 = new Client("Ivan");
-        Client client22 = new Client("Maks");
-        Client client33 = new Client("Qwerty");
+        Client client11 = new Client("Ivan ");
+        client11.requestGenerator();
+        server.fileReader();
+//        Client client22 = new Client("Maks ");
+//        Client client33 = new Client("Qwerty ");
     }
 }
 //    Написать программу для обработки запросов к банковским счетам.
