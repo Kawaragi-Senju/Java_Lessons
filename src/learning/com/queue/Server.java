@@ -1,8 +1,6 @@
 package learning.com.queue;
 
 import java.io.*;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.time.LocalTime;
 import java.util.*;
 
@@ -10,7 +8,7 @@ public class Server {
 
     private static final int CAPACITY = 10;
 
-    public static final File REQUEST_FOLDER = new File("C:\\file");
+    public static final File REQUEST_FOLDER = new File("C:\\File");
     private List<Account> accountList = new ArrayList<>();
     private PriorityQueue<Request> queue = new PriorityQueue<>(new RequestComparator());
     //private List<Client> clientsList = new ArrayList<>();
@@ -51,15 +49,19 @@ public class Server {
             switch (r.getRequestType()) {
                 case BLOCK:
                     blockUnblock(r.getAccount(), false);
+                    System.out.println("block +");
                     break;
                 case UNBLOCK:
                     blockUnblock(r.getAccount(), true);
+                    System.out.println("unblock +");
                     break;
                 case PASSING:
                     passingWritedown(r.getAccount(), r.getSum());
+                    System.out.println("pass +");
                     break;
                 case WRITEDOWN:
                     passingWritedown(r.getAccount(), -r.getSum());
+                    System.out.println("writedown +");
                     break;
             }
         }
@@ -67,16 +69,19 @@ public class Server {
 
     public void fileReader() {
         LocalTime t = LocalTime.now().plusMinutes(1);
-        File file = new File("../../Requests");
         while (LocalTime.now().isBefore(t)) {
-            if (file.list().length != 0) {
-
+            String[] fileNames = REQUEST_FOLDER.list();
+            if (fileNames.length != 0) {
+                for(int i = 0; i < fileNames.length; i++){
+                queue.add(readRequest(fileNames[i]));
+                }
+                completeRequests();
             }
         }
     }
 
     public Request readRequest(String fileName) {
-        File file = new File(fileName);
+        File file = new File(REQUEST_FOLDER.toString() + "\\" + fileName);
         String[] strings;
         String str = "";
         try {
@@ -87,13 +92,13 @@ public class Server {
                 str = br.readLine();
                 strings = str.split(" ");
                 switch (strings[0]) {
-                    case "account":
+                    case "Account":
                         request.setAccount(listOfAccount(Integer.parseInt(strings[1])));
                         break;
-                    case "sum":
+                    case "Sum":
                         request.setSum(Integer.parseInt(strings[1]));
                         break;
-                    case "requestType":
+                    case "RequestType":
                         request.setRequestType(convertRequestType(strings[1]));
                         break;
                     case "Date":
