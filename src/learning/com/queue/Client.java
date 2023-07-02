@@ -9,7 +9,7 @@ import java.util.*;
 
 public class Client {
     private List<Account> list = new ArrayList<>();
-    private int counter = -1;
+    private int counter = 0;
 
     private String name;
 
@@ -19,6 +19,7 @@ public class Client {
         Account acc = new Account();
         Account acc1 = new Account();
         Account acc2 = new Account();
+        this.name = name;
         list.add(acc);
         list.add(acc1);
         list.add(acc2);
@@ -56,24 +57,36 @@ public class Client {
     }
 
     public String generateFileName(){
-        return name + "_" + counter++;
+        return "\\" + name + "_" + counter++;
     }
 
     public void toFile(Request request){
         try {
-            FileWriter fr = new FileWriter(Server.REQUEST_FOLDER.toString() + generateFileName());
+            FileWriter fr = new FileWriter(Server.REQUEST_FOLDER + generateFileName());
             BufferedWriter bw = new BufferedWriter(fr);
-            bw.write("account " + String.valueOf(request.getAccount().getAccount_number()));
-            bw.write("Sum " + request.getSum());
-            bw.write("RequestType " + request.getRequestType());
-            bw.write("Calendar " + request.getCalendar());
+            bw.write("Account " + String.valueOf(request.getAccount().getAccount_number()) + "\n");
+            bw.write("Sum " + request.getSum() + "\n");
+            bw.write("RequestType " + request.getRequestType()+ "\n");
+            bw.write("Date " + dateFormat(request.getCalendar())+ "\n");
+            bw.close();
+
         }catch (IOException ie){
             System.out.println("IoException");
+        }finally {
+
         }
     }
 
-    public String
-    DateFormat df = new SimpleDateFormat("dd.MM.yyyy.k.m.s.S");
+    public String dateFormat(Calendar calendar){
+        DateFormat df = new SimpleDateFormat("dd.MM.yyyy.k.m.s.S");
+        return df.format(calendar.getTime());
+    }
+
+    public void requestGenerator(){
+        for(int i = 0; i < 1000; i++){
+        toFile(generateRequest());
+        }
+    }
 }
 //Клиент – это класс, состоящий из следующих полей:
 //        Счета – список счетов, с которыми работает клиент
