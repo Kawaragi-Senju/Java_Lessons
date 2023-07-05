@@ -11,6 +11,7 @@ public class Server {
     public static final File REQUEST_FOLDER = new File("C:\\File");
     private List<Account> accountList = new ArrayList<>();
     private PriorityQueue<Request> queue = new PriorityQueue<>(new RequestComparator());
+
     //private List<Client> clientsList = new ArrayList<>();
 
 //    public void addClient(Client client){
@@ -93,7 +94,7 @@ public class Server {
                 strings = str.split(" ");
                 switch (strings[0]) {
                     case "Account":
-                        request.setAccount(listOfAccount(Integer.parseInt(strings[1])));
+                        request.setAccount(findAccountByID(Integer.parseInt(strings[1])));
                         break;
                     case "Sum":
                         request.setSum(Integer.parseInt(strings[1]));
@@ -102,7 +103,7 @@ public class Server {
                         request.setRequestType(convertRequestType(strings[1]));
                         break;
                     case "Date":
-                        request.setCalendar(showDate(file));
+                        request.setCalendar(showDate(strings[1]));
                         break;
                 }
             }
@@ -116,7 +117,7 @@ public class Server {
         return null;
     }
 
-    public Account listOfAccount(int i) {
+    public Account findAccountByID(int i) {
         for (Account a : accountList) {
             if (i == a.getAccount_number()) {
                 return a;
@@ -139,10 +140,8 @@ public class Server {
         return null;
     }
 
-    public Calendar showDate(File file) {
+    public Calendar showDate(String str) {
         Calendar date = new GregorianCalendar();
-        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
-            String str = br.readLine();
             String[] strings = str.split("\\.");
             date.set(Calendar.DAY_OF_MONTH, Integer.parseInt(strings[0]));
             date.set(Calendar.MONTH, Integer.parseInt(strings[1]));
@@ -151,9 +150,6 @@ public class Server {
             date.set(Calendar.MINUTE, Integer.parseInt(strings[4]));
             date.set(Calendar.SECOND, Integer.parseInt(strings[5]));
             date.set(Calendar.MILLISECOND, Integer.parseInt(strings[6]));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
         return date;
     }
 
@@ -168,6 +164,10 @@ public class Server {
 
     public void delete(File file){
         file.delete();
+    }
+
+    public void addAccount(List<Account> clientsList){
+        accountList.addAll(clientsList);
     }
 }
 //account 1000

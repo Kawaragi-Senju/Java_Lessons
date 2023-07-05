@@ -6,6 +6,7 @@ public class Main {
         Server server = new Server();
         Client client11 = new Client("Ivan ");
         client11.requestGenerator();
+        server.addAccount(client11.getList());
         server.fileReader();
 //        Client client22 = new Client("Maks ");
 //        Client client33 = new Client("Qwerty ");
